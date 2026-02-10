@@ -83,7 +83,7 @@ export function StatsGoalsBar() {
                         <h3 className="text-4xl font-bold mb-8 uppercase font-serif">Partner With Us</h3>
 
                         <Button
-                            variant="default"
+                            variant="primary"
                             className="bg-[#1B3B5F] text-white hover:bg-[#102A44] hover:scale-105 transition-all px-8 py-6 rounded-full text-sm font-bold tracking-widest uppercase"
                         >
                             Get Involved
