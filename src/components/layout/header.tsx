@@ -105,7 +105,9 @@ export function Header() {
                                             {crownTextIndex === 0 ? (
                                                 <>
                                                     <Crown className="w-4 h-4 text-white fill-white" />
-                                                    <span className="text-[10px] md:text-xs">Bring The Crown Home</span>
+                                                    <span className="text-[10px] md:text-xs">
+                                                        Bring The <span className="text-black">Crown</span> <span className="text-red-600">Home</span>
+                                                    </span>
                                                 </>
                                             ) : (
                                                 <>
@@ -216,7 +218,9 @@ export function Header() {
                                             {crownTextIndex === 0 ? (
                                                 <>
                                                     <Crown className="w-5 h-5 text-white fill-white" />
-                                                    <span className="text-sm">Bring The Crown Home</span>
+                                                    <span className="text-sm">
+                                                        Bring The <span className="text-black">Crown</span> <span className="text-red-600">Home</span>
+                                                    </span>
                                                 </>
                                             ) : (
                                                 <>
