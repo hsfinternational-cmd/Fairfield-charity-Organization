@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { WeatherEffects } from '../layout/weather-effects';
 
 const events = [
     {
@@ -36,98 +38,99 @@ const events = [
 
 export function UpcomingEvents() {
     return (
-        <section className="bg-[#F9F7F2]">
-            {/* Header Section */}
-            <div className="bg-[#1B3B36] text-white py-16 relative overflow-hidden">
-                <div className="container relative z-10 flex flex-col md:flex-row items-center gap-12">
-                    <div className="flex-1 min-w-0 text-center md:text-left">
-                        <span className="text-[var(--color-secondary)] font-bold tracking-widest text-xs uppercase mb-4 block">
-                            EVENTS
-                        </span>
-                        <h2 className="text-5xl md:text-7xl font-serif font-bold mb-6 leading-none">
-                            Upcoming <br /> Events!
-                        </h2>
-                        <p className="text-white text-base leading-relaxed mb-10 max-w-2xl mx-auto md:mx-0">
-                            Join us in our mission to empower communities. Every event is a step towards a brighter, more equitable future for all.
-                        </p>
-                        <Button
-                            variant="outline"
-                            className="border border-[var(--color-secondary)] text-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-white rounded-full px-8 py-6 uppercase tracking-widest text-[10px] font-bold bg-transparent transition-all"
-                        >
-                            Subscribe for Updates
-                        </Button>
-                    </div>
+        <section className="py-24 bg-[#0F0418] text-white relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay pointer-events-none" />
 
-                    {/* Illustration - Abstract representation of 'Man with Box' */}
-                    <div className="flex-1 w-full md:w-auto flex justify-center md:justify-end relative">
-                        <div className="relative w-80 h-80">
-                            <div className="absolute inset-0 bg-[#2C5F55] rounded-full opacity-20" />
-                            <div className="relative z-10 w-full h-full flex items-center justify-center">
-                                {/* Placeholder for the illustration - using a composed graphic */}
-                                <div className="text-center">
-                                    <div className="w-48 h-48 bg-[#E0F2F1] rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white/10 shadow-2xl">
-                                        <span className="text-6xl">🎁</span>
+            {/* Weather Effects (Deep Purple Glass Theme) */}
+            <WeatherEffects className="rounded-none mix-blend-lighten opacity-80" />
+
+            <div className="container relative z-10">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div className="max-w-2xl">
+                        <span className="text-[var(--color-secondary)] font-bold uppercase tracking-wider text-sm mb-4 block">
+                            Get Involved
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-bold font-serif mb-6 text-white">
+                            Upcoming Events
+                        </h2>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            Join us at our upcoming galas, fundraisers, and community meetups.
+                            Together, we celebrate our progress and fuel our future.
+                        </p>
+                    </div>
+                    <Button
+                        variant="outline"
+                        className="rounded-full border-white text-white hover:bg-white hover:text-[var(--color-primary)] transition-all px-8 py-6 text-lg hidden md:flex bg-transparent"
+                    >
+                        View All Events <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                </div>
+
+                <div className="w-full relative overflow-hidden">
+                    {/* Gradient Masks for smooth fade out */}
+                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--color-primary)] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--color-primary)] to-transparent z-10 pointer-events-none" />
+
+                    {/* Marquee Track */}
+                    <div className="flex gap-8 w-max animate-scroll hover:cursor-pointer">
+                        {[...events, ...events, ...events].map((event, index) => (
+                            <Link
+                                key={index}
+                                href="/projects"
+                                className="block w-[380px] shrink-0 transform transition-transform hover:scale-[1.02]"
+                            >
+                                <div className="bg-white rounded-2xl p-0 overflow-hidden hover:shadow-2xl transition-all duration-300 group relative border border-white/10 h-full flex flex-col">
+                                    {/* Image */}
+                                    <div className="w-full h-56 shrink-0 bg-gray-200 relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+                                        <img
+                                            src={event.image}
+                                            alt={event.title}
+                                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                        />
+
+                                        {/* Floating Date Badge */}
+                                        <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl p-3 text-center shadow-lg">
+                                            <div className="text-xl font-bold text-[#D84315] leading-none">{event.day}</div>
+                                            <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500">{event.month}</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="flex-1 p-6 flex flex-col">
+                                        <h3 className="text-xl font-bold font-serif text-[#1B3B36] mb-3 leading-tight group-hover:text-[var(--color-secondary)] transition-colors">
+                                            {event.title}
+                                        </h3>
+                                        <div className="text-[#FF7043] text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                                            <Clock className="w-3 h-3" />
+                                            {event.dateStr.split('|')[0]}
+                                        </div>
+                                        <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                                            {event.description}
+                                        </p>
+
+                                        {/* Bottom Action */}
+                                        <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                                            <span className="flex items-center gap-2 text-xs font-bold text-[#1B3B36] uppercase tracking-wider group-hover:text-[var(--color-secondary)] transition-colors">
+                                                Read More <ArrowRight className="w-3 h-3" />
+                                            </span>
+                                            <span className="text-[10px] bg-[#1B3B36] text-white px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
+                                                View Project
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            {/* Decorative Elements */}
-                            <div className="absolute top-10 right-0 w-8 h-8 bg-[#FF7043] rounded-full animate-bounce" />
-                            <div className="absolute bottom-10 left-10 w-4 h-4 bg-[var(--color-secondary)] rounded-full animate-pulse" />
-                        </div>
+                            </Link>
+                        ))}
                     </div>
                 </div>
-            </div>
+            </div >
 
-            {/* Events List */}
-            <div className="container py-16">
-                <div className="max-w-5xl mx-auto space-y-8">
-                    {events.map((event, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            whileHover={{ y: -5, scale: 1.01 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="flex flex-col md:flex-row gap-8 items-start p-6 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 cursor-pointer border border-transparent hover:border-gray-100"
-                        >
-                            {/* Date Block */}
-                            <div className="w-32 shrink-0">
-                                <div className="bg-white rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] p-6 text-center h-32 flex flex-col justify-center items-center border border-gray-100">
-                                    <div className="text-4xl font-bold font-serif text-[#1B3B36] mb-1 leading-none">{event.day}</div>
-                                    <div className="text-[10px] font-bold text-[#FF7043] uppercase tracking-widest">{event.month}</div>
-                                </div>
-                            </div>
-
-                            {/* Image */}
-                            <div className="w-full md:w-64 h-40 shrink-0 rounded-xl overflow-hidden bg-gray-200 shadow-sm">
-                                <img src={event.image} alt={event.title} className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
-                            </div>
-
-                            {/* Content */}
-                            <div className="flex-1 min-w-0 pt-2">
-                                <h3 className="text-2xl font-bold font-serif text-[#1B3B36] mb-3 leading-tight group-hover:text-[var(--color-secondary)]">
-                                    {event.title}
-                                </h3>
-                                <div className="text-[#FF7043] text-[10px] font-bold uppercase tracking-widest mb-4">
-                                    {event.dateStr}
-                                </div>
-                                <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                                    {event.description}
-                                </p>
-                                <button className="text-[10px] font-bold uppercase tracking-widest text-[#1B3B36] border border-gray-300 rounded-full px-6 py-3 hover:bg-[#1B3B36] hover:text-white transition-all bg-transparent">
-                                    Add to Calendar
-                                </button>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Newsletter Section */}
-            <div className="bg-white pb-16 relative overflow-hidden">
+            {/* Newsletter Section - Spaced & Floating */}
+            <div className="mt-32 relative overflow-hidden">
                 <div className="container relative z-10">
-                    <div className="bg-[#0D9488] rounded-[3rem] p-12 md:p-16 relative overflow-hidden text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <div className="bg-[#0D9488] rounded-[3rem] p-12 md:p-16 relative overflow-hidden text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl shadow-black/20">
                         {/* Organic Shape Overlay */}
                         <div className="absolute inset-0 pointer-events-none opacity-10">
                             <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-white">

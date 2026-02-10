@@ -23,12 +23,12 @@ export function MissionImpact() {
 
                         <div className="relative z-10">
                             <span className="text-sm font-bold tracking-widest uppercase mb-6 block opacity-80">
-                                WHO WE ARE.
+                                FROM THE BATTLEFIELD TO A FAIR FIELD.
                             </span>
 
                             <h2 className="text-4xl md:text-6xl font-serif font-bold mb-8 leading-tight">
-                                Our mission is to give all young people access to <span className="relative inline-block">
-                                    opportunity
+                                Breaking the <span className="relative inline-block">
+                                    Cycle of Poverty
                                     <svg className="absolute w-full h-3 -bottom-1 left-0 text-[var(--color-secondary)]" viewBox="0 0 100 10" preserveAspectRatio="none">
                                         <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                                     </svg>
@@ -36,7 +36,8 @@ export function MissionImpact() {
                             </h2>
 
                             <p className="text-lg md:text-xl opacity-90 mb-12 leading-relaxed max-w-2xl font-light">
-                                Through life-changing programs, nearly 6,000,000 young people take on critical issues such as addressing community health inequities, engaging in civil discourse and advocating for equity and inclusion for all. We believe in young people and their strengths and influence to improve the world around us.
+                                We break the cycle of poverty by addressing Mental Health, Domestic Violence, and Economic Independence simultaneously.
+                                The Army secured the borders; Fairfield secures the home. We fight domestic violence with nutrition and instability with strategy.
                             </p>
 
                             <div className="flex flex-wrap gap-12 items-center">
@@ -45,10 +46,10 @@ export function MissionImpact() {
                                         whileHover={{ scale: 1.1 }}
                                         className="w-24 h-24 rounded-full border-4 border-[var(--color-secondary)] flex items-center justify-center text-3xl font-bold text-white transition-colors"
                                     >
-                                        <CountUp to={92} />%
+                                        <CountUp to={500} />+
                                     </motion.div>
                                     <div className="text-sm font-bold uppercase tracking-wide opacity-90 max-w-[140px] leading-snug">
-                                        our funds go towards program & support services
+                                        Pad Machines Deployed
                                     </div>
                                 </div>
 
@@ -57,10 +58,10 @@ export function MissionImpact() {
                                         whileHover={{ scale: 1.1 }}
                                         className="w-24 h-24 rounded-full border-4 border-[var(--color-secondary)] flex items-center justify-center text-3xl font-bold text-white transition-colors"
                                     >
-                                        <CountUp to={98} />%
+                                        <CountUp to={23} />
                                     </motion.div>
                                     <div className="text-sm font-bold uppercase tracking-wide opacity-90 max-w-[140px] leading-snug">
-                                        children & families support all over the world
+                                        Queens Mentored
                                     </div>
                                 </div>
                             </div>

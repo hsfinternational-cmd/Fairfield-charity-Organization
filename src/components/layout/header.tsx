@@ -2,13 +2,24 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Search, User, Phone, Flower } from 'lucide-react';
+import { Menu, X, Search, User, Phone, Flower, Crown } from 'lucide-react';
 import { Button, cn } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { WeatherEffects } from './weather-effects';
+import { Logo } from '@/components/ui/logo';
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [crownTextIndex, setCrownTextIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCrownTextIndex((prev) => (prev + 1) % 2);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,30 +31,34 @@ export function Header() {
 
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About', href: '/#mission' },
-        { name: 'Projects', href: '/projects' },
-        { name: 'Campaigns', href: '/campaigns' },
-        { name: 'Volunteer', href: '/volunteer' },
+        { name: 'About', href: '/about' },
+        { name: 'Partnership', href: '/partnership' },
+        { name: 'Initiatives', href: '/initiatives' },
         { name: 'Contact', href: '/contact' },
     ];
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50">
-            {/* Top Bar */}
-            <div className="bg-[var(--color-primary)] text-white py-2 text-center text-sm font-medium hidden md:block">
+        <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+            {/* Top Bar - Made slightly transparent */}
+            <div className="bg-[#0F0418]/95 backdrop-blur-sm text-white py-2 text-center text-sm font-medium hidden md:block border-b border-white/5">
                 <div className="container">
                     Available for New Projects! DM me to discuss your next project.
                 </div>
             </div>
 
-            {/* Main Nav */}
+            {/* Main Nav - Glassmorphism (Deep Purple) */}
             <div
                 className={cn(
-                    'transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-100',
-                    isScrolled ? 'py-2 shadow-sm' : 'py-4'
+                    'transition-all duration-300 border-b border-white/10 relative overflow-hidden',
+                    isScrolled
+                        ? 'bg-[#2E0249]/90 backdrop-blur-md py-2 shadow-lg shadow-purple-900/20' // Deep Purple & more opaque
+                        : 'bg-[#2E0249]/75 backdrop-blur-md py-4' // Deep Purple & clearer
                 )}
             >
-                <div className="container flex items-center justify-center relative">
+                {/* --- WEATHER EFFECTS (Rain & Thunder -> Stars) --- */}
+                <WeatherEffects />
+
+                <div className="container flex items-center justify-center relative z-10">
                     {/* Desktop Nav - Centered & Split */}
                     <div className="hidden lg:flex items-center justify-center flex-1 gap-12">
                         {/* Left Links */}
@@ -52,7 +67,7 @@ export function Header() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-[var(--color-text-dark)] font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider"
+                                    className="text-white/90 font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider"
                                 >
                                     {link.name}
                                 </Link>
@@ -60,30 +75,54 @@ export function Header() {
                         </nav>
 
                         {/* Center Logo */}
-                        <Link href="/" className="flex flex-col items-center gap-1 group transform hover:scale-105 transition-transform duration-300">
-                            {/* Umbrella Icon (Custom SVG) */}
-                            <div className="relative w-16 h-16 flex items-center justify-center">
-                                <svg className="w-14 h-14 text-[004D40] fill-current" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    {/* Umbrella Top */}
-                                    <path d="M50 20 C 25 20 5 45 5 55 L 95 55 C 95 45 75 20 50 20 Z" fill="#D84315" />
-                                    {/* Umbrella Handle */}
-                                    <path d="M50 55 L 50 80 C 50 85 55 85 55 80" stroke="#004D40" strokeWidth="4" fill="none" />
-                                    {/* People under umbrella */}
-                                    <circle cx="35" cy="65" r="5" fill="#004D40" />
-                                    <circle cx="50" cy="65" r="5" fill="#004D40" />
-                                    <circle cx="65" cy="65" r="5" fill="#004D40" />
-                                </svg>
-                            </div>
-                            <span className="text-[10px] font-bold tracking-[0.2em] text-[#004D40] uppercase">Fairfield</span>
+                        <Link href="/" className="flex flex-col items-center gap-1 group">
+                            <Logo className="w-24 h-24" />
+                            <motion.span
+                                className="text-[10px] font-bold tracking-[0.2em] uppercase"
+                                style={{ color: 'white' }}
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 2.0 }}
+                            >
+                                Fairfield
+                            </motion.span>
                         </Link>
 
-                        {/* Right Links */}
-                        <nav className="flex items-center gap-8">
-                            {navLinks.slice(3, 6).map((link) => (
+                        {/* Right Links + Special Ambassador Button */}
+                        <nav className="flex items-center gap-6">
+                            {/* Special Button replacing Campaigns */}
+                            <Link href="/miss-world" className="relative group overflow-hidden bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all border border-yellow-400/50">
+                                <div className="relative h-4 w-48">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={crownTextIndex}
+                                            initial={{ y: 20, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            exit={{ y: -20, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="absolute inset-0 flex items-center justify-center gap-2 whitespace-nowrap"
+                                        >
+                                            {crownTextIndex === 0 ? (
+                                                <>
+                                                    <Crown className="w-4 h-4 text-white fill-white" />
+                                                    <span className="text-[10px] md:text-xs">Bring The Crown Home</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <span className="w-2 h-2 rounded-full bg-red-600 animate-[pulse_1s_ease-in-out_infinite] shadow-[0_0_8px_rgba(220,38,38,0.8)]" />
+                                                    <span>Elle Muhoza</span>
+                                                </>
+                                            )}
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
+                            </Link>
+
+                            {navLinks.slice(3, 5).map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-[var(--color-text-dark)] font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider"
+                                    className="text-white/90 font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider"
                                 >
                                     {link.name}
                                 </Link>
@@ -93,15 +132,36 @@ export function Header() {
 
                     {/* Actions (pushed to right) */}
                     <div className="hidden lg:flex items-center gap-4 absolute right-0">
-                        <Button variant="ghost" size="sm" className="px-2">
-                            <Search className="h-5 w-5" />
-                        </Button>
-                        <Button variant="secondary" size="sm" className="bg-[#D84315] hover:bg-[#BF360C] text-white rounded-full px-6">
+                        {/* Animated Search Input */}
+                        <div className="relative flex items-center">
+                            <AnimatePresence>
+                                {isSearchOpen && (
+                                    <motion.input
+                                        initial={{ width: 0, opacity: 0, padding: 0 }}
+                                        animate={{ width: 200, opacity: 1, padding: "0.5rem" }}
+                                        exit={{ width: 0, opacity: 0, padding: 0 }}
+                                        placeholder="Search..."
+                                        className="bg-white/10 border border-white/20 rounded-full text-sm outline-none px-4 py-2 mr-2 text-white placeholder:text-white/50 focus:bg-white/20"
+                                        autoFocus
+                                    />
+                                )}
+                            </AnimatePresence>
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                className="px-2 hover:bg-white/20 text-white"
+                                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                            >
+                                <Search className="h-5 w-5 text-white" />
+                            </Button>
+                        </div>
+
+                        <Button variant="secondary" size="sm" className="bg-[#D84315] hover:bg-[#BF360C] text-white rounded-full px-6 shadow-lg shadow-orange-500/20">
                             Donate
                         </Button>
                     </div>
 
-                    {/* Mobile Menu Toggle */}
+                    {/* Mobile Menu Toggle - SAME */}
                     <button
                         className="lg:hidden p-2 absolute right-0"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -136,6 +196,39 @@ export function Header() {
                                     {link.name}
                                 </Link>
                             ))}
+                            {/* Mobile Ambassador Link */}
+                            {/* Mobile Miss World Button */}
+                            <Link
+                                href="/miss-world"
+                                className="relative overflow-hidden bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-xl font-bold uppercase tracking-wider shadow-md border border-yellow-400/50 mt-2"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                <div className="relative h-12 w-full">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={crownTextIndex}
+                                            initial={{ y: 20, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            exit={{ y: -20, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="absolute inset-0 flex items-center justify-center gap-3 whitespace-nowrap"
+                                        >
+                                            {crownTextIndex === 0 ? (
+                                                <>
+                                                    <Crown className="w-5 h-5 text-white fill-white" />
+                                                    <span className="text-sm">Bring The Crown Home</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-[pulse_1s_ease-in-out_infinite] shadow-[0_0_8px_rgba(220,38,38,0.8)]" />
+                                                    <span className="text-sm">Elle Muhoza</span>
+                                                </>
+                                            )}
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
+                            </Link>
+
                             <div className="flex flex-col gap-4 mt-4">
                                 <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-text-light)]">
                                     <Phone className="h-4 w-4" />

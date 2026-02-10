@@ -4,17 +4,16 @@
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
 
-  --color-primary: #00A651;
-  --color-primary-dark: #008c44;
-  --color-secondary: #FDB714;
-  --color-secondary-dark: #e0a010;
+  --color-primary: #1B3B5F;
+  --color-primary-dark: #102A44;
+  --color-secondary: #FF9F1C;
+  --color-secondary-dark: #E68A00;
+  --color-accent: #E71D36;
+  --color-highlight: #2EC4B6;
   --color-text-dark: #1A1A1A;
   --color-text-light: #666666;
   --color-background: #ffffff;
   --color-foreground: #1A1A1A;
-
-  --color-accent: #2dd4bf;
-  /* Teal/Turquoise */
 
   --container-max-width: 1200px;
   --spacing-sm: 8px;
@@ -39,6 +38,10 @@
   --foreground: #171717;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -60,4 +63,22 @@ h6 {
 
 button {
   cursor: pointer;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-duration: 60s;
 }

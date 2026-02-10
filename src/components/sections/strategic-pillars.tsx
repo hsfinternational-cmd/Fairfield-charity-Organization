@@ -6,24 +6,24 @@ import { Heart, Laptop, TrendingUp } from 'lucide-react';
 const pillars = [
     {
         icon: Heart,
-        title: 'The Empowerment Nexus (Health)',
+        title: 'Health: The Empowerment Nexus',
         subtitle: 'Healing the Home',
-        description: 'We focus on Domestic Violence prevention using the SASA! Methodology, drive awareness for Mental Health with our Butabika partnership, and end Period Poverty through the deployment of Cleannate Machines.',
+        description: "Healing the home, fighting Domestic Violence, and the 'Good Food' mental health protocol. A malnourished brain is an angry brain—we fight violence with nutrition.",
         color: 'bg-[var(--color-accent)]'
     },
     {
-        icon: Laptop,
-        title: 'The "Musomesa" Digital Academy (Education)',
-        subtitle: 'The Future is Digital',
-        description: 'Bridging the digital divide with our AI-driven education app. We provide youth with essential digital literacy skills, coding workshops, and access to modern tools to compete in the global economy.',
-        color: 'bg-[var(--color-secondary)]'
+        icon: TrendingUp,
+        title: 'Wealth: Agriculture & OWC',
+        subtitle: 'Garrison to Garden',
+        description: "The 'Emmwanyi' (Coffee) and 'Emmere' (Food Security) projects. Partnering with Operation Wealth Creation to secure food security and financial independence.",
+        color: 'bg-[var(--color-primary)]'
     },
     {
-        icon: TrendingUp,
-        title: 'Economic Resilience (Wealth)',
-        subtitle: 'Women in Agriculture',
-        description: 'Through the "Emmwanyi" Coffee project, we train women in modern farming techniques and financial literacy, turning subsistence farming into sustainable, wealth-generating agribusiness.',
-        color: 'bg-[var(--color-primary)]'
+        icon: Laptop,
+        title: 'Education: Musomesa Academy',
+        subtitle: 'The Future is Digital',
+        description: 'The AI-driven digital academy for youth skills. Breaking information gatekeeping and preparing the next generation for the global economy with modern tools.',
+        color: 'bg-[var(--color-secondary)]'
     }
 ];
 

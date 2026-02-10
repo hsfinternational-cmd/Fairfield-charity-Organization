@@ -11,8 +11,9 @@ import { UpcomingEvents } from '@/components/sections/upcoming-events';
 import { ProblemSolution } from '@/components/sections/problem-solution';
 import { StrategicPillars } from '@/components/sections/strategic-pillars'; // Kept for content depth
 import { StrategicPartnership } from '@/components/sections/strategic-partnership';
-import { ImpactStats } from '@/components/sections/impact-stats';
-import { RecentCampaigns } from '@/components/sections/recent-campaigns';
+import { StatsGoalsBar } from '@/components/sections/stats-goals-bar';
+import { HouseOfHelp } from '@/components/sections/house-of-help';
+import { TeamVolunteers } from '@/components/sections/team-volunteers';
 import { Footer } from '@/components/layout/footer';
 
 export default function Home() {
@@ -27,14 +28,15 @@ export default function Home() {
       <div id="mission">
         <MissionImpact />
       </div>
+      <StatsGoalsBar />
+      <HouseOfHelp />
       <CoreValues />
       <HowWeHelp />
       <RealLifeStories />
       <UpcomingEvents />
+      <TeamVolunteers />
 
       <StrategicPartnership />
-      <ImpactStats />
-      <RecentCampaigns />
       <Footer />
     </main>
   );
