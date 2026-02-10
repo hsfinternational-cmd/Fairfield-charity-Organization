@@ -20,11 +20,11 @@ export function Header() {
 
     const navLinks = [
         { name: 'Home', href: '/' },
+        { name: 'About', href: '/#mission' },
+        { name: 'Projects', href: '/projects' },
         { name: 'Campaigns', href: '/campaigns' },
-        { name: 'About', href: '/about' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'Pages', href: '/pages' },
-        { name: 'Contact Us', href: '/contact' },
+        { name: 'Volunteer', href: '/volunteer' },
+        { name: 'Contact', href: '/contact' },
     ];
 
     return (
@@ -43,54 +43,76 @@ export function Header() {
                     isScrolled ? 'py-2 shadow-sm' : 'py-4'
                 )}
             >
-                <div className="container flex items-center justify-between">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 group">
-                        <Flower className="h-8 w-8 text-[var(--color-primary)] group-hover:rotate-180 transition-transform duration-500" />
-                        <span className="text-2xl font-bold font-serif text-[var(--color-text-dark)]">
-                            GainImpact
-                        </span>
-                    </Link>
+                <div className="container flex items-center justify-center relative">
+                    {/* Desktop Nav - Centered & Split */}
+                    <div className="hidden lg:flex items-center justify-center flex-1 gap-12">
+                        {/* Left Links */}
+                        <nav className="flex items-center gap-8">
+                            {navLinks.slice(0, 3).map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-[var(--color-text-dark)] font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </nav>
 
-                    {/* Desktop Nav */}
-                    <nav className="hidden lg:flex items-center gap-8">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="text-[var(--color-text-dark)] font-medium hover:text-[var(--color-primary)] transition-colors"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                    </nav>
+                        {/* Center Logo */}
+                        <Link href="/" className="flex flex-col items-center gap-1 group transform hover:scale-105 transition-transform duration-300">
+                            {/* Umbrella Icon (Custom SVG) */}
+                            <div className="relative w-16 h-16 flex items-center justify-center">
+                                <svg className="w-14 h-14 text-[004D40] fill-current" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    {/* Umbrella Top */}
+                                    <path d="M50 20 C 25 20 5 45 5 55 L 95 55 C 95 45 75 20 50 20 Z" fill="#D84315" />
+                                    {/* Umbrella Handle */}
+                                    <path d="M50 55 L 50 80 C 50 85 55 85 55 80" stroke="#004D40" strokeWidth="4" fill="none" />
+                                    {/* People under umbrella */}
+                                    <circle cx="35" cy="65" r="5" fill="#004D40" />
+                                    <circle cx="50" cy="65" r="5" fill="#004D40" />
+                                    <circle cx="65" cy="65" r="5" fill="#004D40" />
+                                </svg>
+                            </div>
+                            <span className="text-[10px] font-bold tracking-[0.2em] text-[#004D40] uppercase">Fairfield</span>
+                        </Link>
 
-                    {/* Actions */}
-                    <div className="hidden lg:flex items-center gap-4">
-                        <div className="items-center gap-2 hidden xl:flex text-sm font-medium text-[var(--color-text-light)]">
-                            <Phone className="h-4 w-4" />
-                            <span>(234) 000 700 999</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Button variant="ghost" size="sm" className="px-2">
-                                <Search className="h-5 w-5" />
-                            </Button>
-                            <Button variant="ghost" size="sm" className="px-2">
-                                <User className="h-5 w-5" />
-                            </Button>
-                        </div>
-                        <Button variant="secondary" size="sm">
-                            Donate Now
+                        {/* Right Links */}
+                        <nav className="flex items-center gap-8">
+                            {navLinks.slice(3, 6).map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-[var(--color-text-dark)] font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Actions (pushed to right) */}
+                    <div className="hidden lg:flex items-center gap-4 absolute right-0">
+                        <Button variant="ghost" size="sm" className="px-2">
+                            <Search className="h-5 w-5" />
+                        </Button>
+                        <Button variant="secondary" size="sm" className="bg-[#D84315] hover:bg-[#BF360C] text-white rounded-full px-6">
+                            Donate
                         </Button>
                     </div>
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="lg:hidden p-2"
+                        className="lg:hidden p-2 absolute right-0"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? <X /> : <Menu />}
                     </button>
+
+                    {/* Mobile Logo (Left aligned if needed or centered) - Adding simplifed logo for mobile */}
+                    <Link href="/" className="lg:hidden absolute left-0 flex items-center gap-2">
+                        <span className="text-xl font-bold font-serif text-[var(--color-text-dark)]">Fairfield</span>
+                    </Link>
                 </div>
             </div>
 
@@ -127,6 +149,6 @@ export function Header() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </header>
+        </header >
     );
 }

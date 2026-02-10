@@ -1,69 +1,134 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Handshake, TrendingUp, HeartHandshake, Box } from 'lucide-react';
-
-const benefits = [
-    {
-        title: 'Free Access',
-        icon: Box,
-        description: 'A group of donors cover our operating costs so 100% of your money can fund water projects.',
-    },
-    {
-        title: 'Locals for Locals',
-        icon: Handshake,
-        description: 'A group of donors cover our operating costs so 100% of your money can fund water projects.',
-    },
-    {
-        title: 'Real Impact',
-        icon: TrendingUp,
-        description: 'A group of donors cover our operating costs so 100% of your money can fund water projects.',
-    },
-    {
-        title: 'Safety Net',
-        icon: HeartHandshake,
-        description: 'A group of donors cover our operating costs so 100% of your money can fund water projects.',
-    },
-];
+import { Droplets, Users, Activity, Shield, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export function MakeDifference() {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
-            {/* Background World Map Vector (Abstract) */}
-            <div className="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center">
-                <div className="w-[120%] h-[120%] bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-center bg-no-repeat bg-contain" />
-            </div>
+        <section className="py-24 bg-white overflow-hidden relative">
+            {/* Background Map/Pattern Decoration (Abstracted) */}
+            <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 bg-[url('https://www.transparenttextures.com/patterns/connected.png')] pointer-events-none" />
 
             <div className="container relative z-10">
-                <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <span className="text-[var(--color-secondary)] font-bold uppercase tracking-wider text-sm mb-4 block">
-                        What We Do
+
+                {/* PART 1: Make a Difference (Cards) */}
+                <div className="text-center max-w-3xl mx-auto mb-20">
+                    <span className="text-[var(--color-secondary)] font-bold tracking-widest text-xs uppercase mb-4 block">
+                        WHAT WE DO
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">Make a Difference</h2>
-                    <p className="text-[var(--color-text-light)] text-lg leading-relaxed">
-                        It's through initiatives that you actually can grow and act out everything that is not essential to mankind to get lost.
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1B3B36] mb-6">
+                        Make a Difference
+                    </h2>
+                    <p className="text-gray-500 max-w-2xl mx-auto">
+                        It's through initiatives that you can help us get out of everything that is not supposed to matter so we can matter.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {benefits.map((benefit, index) => (
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
+                    {[
+                        { icon: Droplets, title: 'Free Access', desc: 'A group of donors cover our operating costs so 100% of your money can fund water projects.' },
+                        { icon: Users, title: 'Locals for Locals', desc: 'A group of donors cover our operating costs so 100% of your money can fund water projects.' },
+                        { icon: Activity, title: 'Real Impact', desc: 'A group of donors cover our operating costs so 100% of your money can fund water projects.' },
+                        { icon: Shield, title: 'Safety Net', desc: 'A group of donors cover our operating costs so 100% of your money can fund water projects.' }
+                    ].map((item, idx) => (
                         <motion.div
-                            key={index}
+                            key={idx}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
+                            whileHover={{ y: -10 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            className="bg-white rounded-xl p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-[var(--color-primary)]/20 hover:shadow-lg transition-all duration-300 group text-center"
+                            transition={{ delay: idx * 0.1 }}
+                            className="bg-white p-8 rounded-3xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] text-center group border border-transparent hover:border-gray-100 transition-all duration-300"
                         >
-                            <div className="w-20 h-20 mx-auto bg-orange-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-[var(--color-primary)] transition-colors duration-300">
-                                <benefit.icon className="w-8 h-8 text-[var(--color-secondary)] group-hover:text-white transition-colors duration-300" />
+                            <div className="w-16 h-16 mx-auto bg-orange-50 rounded-2xl flex items-center justify-center mb-6 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                                <item.icon className="w-8 h-8" strokeWidth={1.5} />
                             </div>
-                            <h3 className="text-xl font-bold mb-4">{benefit.title}</h3>
-                            <p className="text-[var(--color-text-light)] text-sm leading-relaxed">
-                                {benefit.description}
+                            <h3 className="text-lg font-bold font-serif text-[#1B3B36] mb-4">{item.title}</h3>
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                                {item.desc}
                             </p>
                         </motion.div>
                     ))}
+                </div>
+
+                {/* PART 2: Changing Lives with Knowledge */}
+                <div className="flex flex-col lg:flex-row gap-16 items-center">
+
+                    {/* Left: Images */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="relative shrink-0"
+                    >
+                        {/* Main Circular Image */}
+                        <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden border-8 border-white shadow-2xl mx-auto lg:mx-0 z-10">
+                            <img
+                                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                alt="Child looking at camera"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        {/* Floating Small Circle 1 */}
+                        <div className="absolute top-0 left-0 lg:-left-12 w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-xl z-20 hidden md:block">
+                            <img
+                                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                                alt="Children smiling"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        {/* Floating Small Circle 2 */}
+                        <div className="absolute bottom-10 right-0 lg:-right-4 w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-xl z-20 hidden md:block">
+                            <img
+                                src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                                alt="Community"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        {/* Decorative Dots */}
+                        <div className="absolute top-10 right-10 w-4 h-4 bg-[var(--color-secondary)] rounded-full animate-pulse z-30" />
+                        <div className="absolute bottom-20 left-10 w-6 h-6 bg-[#1B3B36] rounded-full opacity-20 z-0" />
+                    </motion.div>
+
+                    {/* Right: Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center lg:text-left flex-1 min-w-0"
+                    >
+                        <span className="text-[var(--color-secondary)] font-bold tracking-widest text-xs uppercase mb-4 block">
+                            ABOUT US
+                        </span>
+                        <h2 className="text-4xl md:text-6xl font-serif font-bold text-[#1B3B36] mb-8 leading-tight">
+                            Changing Lives with <br /> Knowledge
+                        </h2>
+
+                        <p className="text-lg font-medium text-[#1B3B36] mb-6">
+                            Our promise that your giving is doing what it's supposed to: changing lives.
+                        </p>
+
+                        <p className="text-gray-500 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+                            Today, we will work to defeat life-saving aid to millions of people living on the edge of survival. Tomorrow, where the crisis subsides, we will work alongside community members to restore job opportunities.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                            <Button className="bg-[#1B3B36] text-white rounded-full px-10 py-6 uppercase tracking-widest text-xs font-bold hover:bg-[#2C5F55]">
+                                Learn More
+                            </Button>
+
+                            <button className="flex items-center gap-3 font-bold text-[#1B3B36] uppercase text-xs tracking-widest hover:text-[var(--color-secondary)] transition-colors group">
+                                <div className="w-12 h-12 rounded-full bg-[var(--color-secondary)] flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                                    <Play className="w-4 h-4 ml-1 fill-current" />
+                                </div>
+                                Watch Video
+                            </button>
+                        </div>
+                    </motion.div>
+
                 </div>
             </div>
         </section>

@@ -6,75 +6,86 @@ import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
     return (
-        <section className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden bg-[#0F172A] text-white">
-            {/* Background with overlay */}
+        <section className="relative h-[90vh] flex flex-col justify-center overflow-hidden">
+            {/* Background Image */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-[#0F172A]/90 z-10" />
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center" />
+                <div className="absolute inset-0 bg-black/40 z-10" />
+                <div
+                    className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center"
+                    style={{ backgroundPosition: 'center 20%' }}
+                />
             </div>
 
-            <div className="container relative z-20">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-
-                    {/* Text Content */}
+            {/* Hero Content */}
+            <div className="container relative z-20 text-white pt-20">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.2,
+                                delayChildren: 0.3
+                            }
+                        }
+                    }}
+                    className="max-w-4xl"
+                >
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
+                        variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
                     >
-                        <div className="inline-block px-4 py-1 mb-6 border border-[var(--color-secondary)] rounded-full bg-[var(--color-secondary)]/10 backdrop-blur-sm">
-                            <span className="text-[var(--color-secondary)] font-bold tracking-wider text-sm uppercase">
-                                The Official "Elle Cares" Initiative
-                            </span>
-                        </div>
-
-                        <h1 className="text-5xl lg:text-7xl font-bold font-serif mb-6 leading-tight">
-                            Restoring Hope: <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-secondary)] to-white">
-                                A New Era for Uganda’s Women & Youth
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-serif mb-6 leading-tight tracking-tight">
+                            RESTORING HOPE <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-secondary)] via-yellow-200 to-[var(--color-secondary)] bg-300% animate-gradient">
+                                TO UGANDA'S FUTURE
                             </span>
                         </h1>
-
-                        <p className="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed">
-                            The Official "Elle Cares" Initiative led by Miss Uganda, <strong>Elle Trivia Muhoza</strong>.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button variant="primary" size="lg" className="bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-dark)] text-[#3E2723]">
-                                Support Our Mission
-                            </Button>
-                            <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-[#3E2723]">
-                                View Our Strategic Partners <ArrowRight className="ml-2 w-4 h-4" />
-                            </Button>
-                        </div>
                     </motion.div>
 
-                    {/* Visual Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative hidden lg:block h-[600px]"
+                    <motion.p
+                        variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
+                        className="text-xl md:text-2xl mb-10 font-light tracking-wide max-w-2xl text-gray-100/90 leading-relaxed"
                     >
-                        {/* Main Image */}
-                        <div className="absolute right-0 top-0 w-4/5 h-full rounded-2xl overflow-hidden border-4 border-[var(--color-secondary)]/30">
-                            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1618585477437-c1d4715f368c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center" />
-                        </div>
+                        The Official "Elle Cares" Initiative led by Miss Uganda, <span className="font-serif italic text-white">Elle Trivia Muhoza</span>.
+                    </motion.p>
 
-                        {/* Floating Info Card */}
-                        <motion.div
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                            className="absolute bottom-12 left-0 bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 max-w-xs"
+                    <motion.div
+                        variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
+                    >
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            className="group relative overflow-hidden rounded-full border-2 border-[var(--color-secondary)] text-white hover:text-white px-10 py-7 text-lg tracking-widest uppercase transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(253,183,20,0.5)] bg-transparent"
                         >
-                            <div className="text-[var(--color-secondary)] font-bold text-lg mb-1">Top 5 Contender</div>
-                            <div className="text-sm text-gray-200">
-                                Elle Muhoza is a "Beauty with a Purpose" Champion and a Top 5 Pick for the 73rd Miss World Festival.
-                            </div>
-                        </motion.div>
+                            <span className="relative z-10 group-hover:text-black transition-colors duration-300">Join With Us</span>
+                            <div className="absolute inset-0 bg-[var(--color-secondary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                        </Button>
                     </motion.div>
+                </motion.div>
+            </div>
 
+            {/* Bottom Features Bar (Classic Reference Style) */}
+            <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent pt-20 pb-10">
+                <div className="container">
+                    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
+                        {[
+                            { num: '01', title: 'The Empowerment Nexus', subtitle: 'Health & Healing' },
+                            { num: '02', title: 'Musomesa Academy', subtitle: 'Digital Education' },
+                            { num: '03', title: 'Economic Resilience', subtitle: 'Wealth Creation' }
+                        ].map((item, idx) => (
+                            <div key={idx} className="px-6 py-4 flex items-center gap-4 text-white group cursor-pointer hover:bg-white/5 transition-colors">
+                                <span className="text-5xl font-bold font-serif opacity-30 group-hover:opacity-100 group-hover:text-[var(--color-secondary)] transition-all">
+                                    {item.num}
+                                </span>
+                                <div>
+                                    <h3 className="font-bold text-lg leading-tight">{item.title}</h3>
+                                    <p className="text-sm opacity-70 uppercase tracking-wider">{item.subtitle}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

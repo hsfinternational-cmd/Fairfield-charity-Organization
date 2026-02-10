@@ -37,13 +37,11 @@ export function Footer() {
                 <div>
                     <h4 className="text-lg font-bold mb-6 font-serif">Quick Links</h4>
                     <ul className="space-y-4">
-                        {['About Us', 'The Army Partnership (OWC)', 'Initiatives', 'Donate', 'Contact'].map((item) => (
-                            <li key={item}>
-                                <Link href="#" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">
-                                    {item}
-                                </Link>
-                            </li>
-                        ))}
+                        <li><Link href="/#mission" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">About Us</Link></li>
+                        <li><Link href="/projects" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">The Army Partnership (OWC)</Link></li>
+                        <li><Link href="/projects" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Initiatives</Link></li>
+                        <li><Link href="/contact" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Donate</Link></li>
+                        <li><Link href="/contact" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Contact</Link></li>
                     </ul>
                 </div>
 
@@ -51,13 +49,11 @@ export function Footer() {
                 <div>
                     <h4 className="text-lg font-bold mb-6 font-serif">Get Involved</h4>
                     <ul className="space-y-4">
-                        {['Partner with Us', 'Volunteer', 'Careers', 'Press', 'Sponsorship'].map((item) => (
-                            <li key={item}>
-                                <Link href="#" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">
-                                    {item}
-                                </Link>
-                            </li>
-                        ))}
+                        <li><Link href="/contact" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Partner with Us</Link></li>
+                        <li><Link href="/volunteer" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Volunteer</Link></li>
+                        <li><Link href="/volunteer" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Careers</Link></li>
+                        <li><Link href="/contact" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Press</Link></li>
+                        <li><Link href="/campaigns" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">Sponsorship</Link></li>
                     </ul>
                 </div>
 
