@@ -24,28 +24,27 @@ export function Hero() {
                     >
                         <div className="inline-block px-4 py-1 mb-6 border border-[var(--color-secondary)] rounded-full bg-[var(--color-secondary)]/10 backdrop-blur-sm">
                             <span className="text-[var(--color-secondary)] font-bold tracking-wider text-sm uppercase">
-                                Global Ambassador
+                                The Official "Elle Cares" Initiative
                             </span>
                         </div>
 
                         <h1 className="text-5xl lg:text-7xl font-bold font-serif mb-6 leading-tight">
-                            Uganda To <br />
+                            Restoring Hope: <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-secondary)] to-white">
-                                The World
+                                A New Era for Uganda’s Women & Youth
                             </span>
                         </h1>
 
                         <p className="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed">
-                            Meet <strong className="text-white">Elle Trivia Muhoza</strong>: Miss Uganda 2025/2026.
-                            An aviation scholar, entrepreneur, and philanthropist taking Uganda to the global stage.
+                            The Official "Elle Cares" Initiative led by Miss Uganda, <strong>Elle Trivia Muhoza</strong>.
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <Button variant="primary" size="lg" className="bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-dark)] text-[#0F172A]">
-                                Partner With Us
+                            <Button variant="primary" size="lg" className="bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-dark)] text-[#3E2723]">
+                                Support Our Mission
                             </Button>
-                            <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-[#0F172A]">
-                                Meet Elle Muhoza <ArrowRight className="ml-2 w-4 h-4" />
+                            <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-[#3E2723]">
+                                View Our Strategic Partners <ArrowRight className="ml-2 w-4 h-4" />
                             </Button>
                         </div>
                     </motion.div>

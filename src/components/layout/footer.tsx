@@ -13,7 +13,7 @@ export function Footer() {
                     <Link href="/" className="flex items-center gap-2 mb-6">
                         <Flower className="h-8 w-8 text-[var(--color-primary)]" />
                         <span className="text-2xl font-bold font-serif text-[var(--color-text-dark)]">
-                            GainImpact
+                            Fairfield Charity
                         </span>
                     </Link>
                     <p className="text-[var(--color-text-light)] mb-8 leading-relaxed">
@@ -37,9 +37,9 @@ export function Footer() {
                 <div>
                     <h4 className="text-lg font-bold mb-6 font-serif">Quick Links</h4>
                     <ul className="space-y-4">
-                        {['About Us', 'Our Campaigns', 'Latest News', 'Contact Us', 'Privacy Policy'].map((item) => (
+                        {['About Us', 'The Army Partnership (OWC)', 'Initiatives', 'Donate', 'Contact'].map((item) => (
                             <li key={item}>
-                                <Link href="#" className="text-[var(--color-text-light)] hover:text-[var(--color-primary)] transition-colors">
+                                <Link href="#" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">
                                     {item}
                                 </Link>
                             </li>
@@ -51,9 +51,9 @@ export function Footer() {
                 <div>
                     <h4 className="text-lg font-bold mb-6 font-serif">Get Involved</h4>
                     <ul className="space-y-4">
-                        {['Become a Volunteer', 'Donate Now', 'Partner with Us', 'Corporate Giving', 'Careers'].map((item) => (
+                        {['Partner with Us', 'Volunteer', 'Careers', 'Press', 'Sponsorship'].map((item) => (
                             <li key={item}>
-                                <Link href="#" className="text-[var(--color-text-light)] hover:text-[var(--color-primary)] transition-colors">
+                                <Link href="#" className="text-[var(--color-text-light)] hover:text-[var(--color-secondary)] transition-colors">
                                     {item}
                                 </Link>
                             </li>
@@ -87,7 +87,7 @@ export function Footer() {
             {/* Bottom Bar */}
             <div className="bg-gray-50 py-8 text-center text-sm text-[var(--color-text-light)]">
                 <div className="container">
-                    &copy; {new Date().getFullYear()} Fairfield Charity Organization. All rights reserved.
+                    &copy; 2026 Fairfield Charity Organization. All rights reserved.
                 </div>
             </div>
         </footer>
