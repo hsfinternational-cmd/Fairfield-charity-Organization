@@ -12,9 +12,8 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}
                     <div>
-                        <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
-                            <Logo className="w-12 h-12" />
-                            <span className="text-2xl font-bold font-serif tracking-tight group-hover:text-[var(--color-secondary)] transition-colors">Fairfield Charity</span>
+                        <Link href="/" className="inline-block mb-6 group">
+                            <Logo variant="horizontal" dark />
                         </Link>
                         <p className="text-gray-400 leading-relaxed mb-6 font-light">
                             We're building a world where everyone has the power to shape their lives. Together, we can create lasting change.

@@ -6,6 +6,8 @@ import { Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { WeatherEffects } from '../layout/weather-effects';
 
+import { Logo } from '@/components/ui/logo';
+
 const events = [
     {
         day: '03',
@@ -138,7 +140,10 @@ export function UpcomingEvents() {
                             </svg>
                         </div>
 
-                        <div className="relative z-10 flex-1 min-w-0 text-white">
+                        <div className="relative z-10 flex-1 min-w-0 text-white flex flex-col items-center lg:items-start text-center lg:text-left">
+                            <div className="mb-6">
+                                <Logo variant="full" dark />
+                            </div>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 leading-tight">
                                 Subscribe for Event Updates
                             </h2>

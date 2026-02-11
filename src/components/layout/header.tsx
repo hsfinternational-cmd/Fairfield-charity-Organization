@@ -75,17 +75,8 @@ export function Header() {
                         </nav>
 
                         {/* Center Logo */}
-                        <Link href="/" className="flex flex-col items-center gap-1 group">
-                            <Logo className="w-24 h-24" />
-                            <motion.span
-                                className="text-[10px] font-bold tracking-[0.2em] uppercase"
-                                style={{ color: 'white' }}
-                                initial={{ opacity: 0, y: 5 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 2.0 }}
-                            >
-                                Fairfield
-                            </motion.span>
+                        <Link href="/" className="flex items-center gap-1 group">
+                            <Logo variant="horizontal" dark className="scale-90 md:scale-100" />
                         </Link>
 
                         {/* Right Links + Special Ambassador Button */}
