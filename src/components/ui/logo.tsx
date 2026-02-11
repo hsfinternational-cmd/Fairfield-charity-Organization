@@ -2,10 +2,20 @@
 
 import { motion } from 'framer-motion';
 
-export function Logo({ className = "w-16 h-16" }: { className?: string }) {
-    return (
+export function Logo({
+    className = "",
+    variant = "icon",
+    dark = false
+}: {
+    className?: string;
+    variant?: "icon" | "full" | "horizontal";
+    dark?: boolean;
+}) {
+    const textColor = dark ? "text-white" : "text-[#0D47A1]";
+
+    const Icon = (
         <motion.div
-            className={`relative flex items-center justify-center ${className}`}
+            className={`relative flex items-center justify-center ${variant === 'icon' ? className : 'w-full h-full'}`}
             initial="hidden"
             animate="visible"
         >
@@ -62,8 +72,6 @@ export function Logo({ className = "w-16 h-16" }: { className?: string }) {
                     />
 
                     {/* People - Teal/Cyan */}
-                    {/* 4 Figures: 2 Small Outer, 2 Large Inner */}
-
                     {/* Far Left (Small) */}
                     <motion.circle cx="20" cy="58" r="5" fill="#26C6DA" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.0 }} />
                     <motion.path d="M12 68 Q 20 60 28 68 v 10 h -16 z" fill="#26C6DA" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} />
@@ -91,5 +99,25 @@ export function Logo({ className = "w-16 h-16" }: { className?: string }) {
                 </g>
             </motion.svg>
         </motion.div>
+    );
+
+    if (variant === 'icon') {
+        return Icon;
+    }
+
+    return (
+        <div className={`flex items-center ${variant === 'full' ? 'flex-col gap-2' : 'flex-row gap-3'} ${className}`}>
+            <div className={`${variant === 'full' ? 'w-24 h-24' : 'w-16 h-16'}`}>
+                {Icon}
+            </div>
+            <div className={`flex flex-col ${variant === 'full' ? 'items-center text-center' : 'items-start text-left'}`}>
+                <span className={`font-bold font-sans tracking-[0.2em] leading-none ${textColor} ${variant === 'full' ? 'text-2xl' : 'text-xl'}`}>
+                    FAIRFIELD
+                </span>
+                <span className={`font-medium font-sans tracking-[0.1em] text-[0.6rem] md:text-[0.7rem] ${textColor} opacity-90`}>
+                    CHARITY ORGANIZATION
+                </span>
+            </div>
+        </div>
     );
 }
