@@ -49,20 +49,22 @@ export function Header() {
             {/* Main Nav - Glassmorphism (Deep Purple) */}
             <div
                 className={cn(
-                    'transition-all duration-300 border-b border-white/10 relative overflow-hidden',
+                    'transition-all duration-300 border-b border-white/10 relative', // Removed overflow-hidden to allow logo overlap
                     isScrolled
                         ? 'bg-[#2E0249]/90 backdrop-blur-md py-2 shadow-lg shadow-purple-900/20' // Deep Purple & more opaque
                         : 'bg-[#2E0249]/75 backdrop-blur-md py-4' // Deep Purple & clearer
                 )}
             >
                 {/* --- WEATHER EFFECTS (Rain & Thunder -> Stars) --- */}
-                <WeatherEffects />
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <WeatherEffects />
+                </div>
 
                 <div className="container flex items-center justify-between relative z-10 w-full">
                     {/* Desktop Nav - 3 Column Layout */}
                     <div className="hidden lg:flex w-full items-center justify-between">
-                        {/* LEFT COLUMN: Nav Links */}
-                        <div className="flex-1 flex justify-start items-center">
+                        {/* LEFT COLUMN: Nav Links - flex-1 w-0 guarantees equal width */}
+                        <div className="flex-1 w-0 flex justify-start items-center">
                             <nav className="flex items-center gap-6 xl:gap-8">
                                 {navLinks.slice(0, 3).map((link) => (
                                     <Link
@@ -76,15 +78,19 @@ export function Header() {
                             </nav>
                         </div>
 
-                        {/* CENTER COLUMN: Logo */}
-                        <div className="flex-shrink-0 flex justify-center px-4">
-                            <Link href="/" className="flex items-center gap-1 group">
-                                <Logo variant="horizontal" dark className="scale-90 md:scale-100" />
+                        {/* CENTER COLUMN: Logo with "Sheltering" Curve */}
+                        <div className="flex-shrink-0 flex justify-center px-4 relative">
+                            {/* Curved "Box" Effect - White Background behind Logo */}
+                            <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 w-48 h-32 bg-white rounded-b-[4rem] shadow-xl z-[-1] opacity-100 hidden md:block"></div>
+
+                            <Link href="/" className="flex items-center gap-1 group relative top-2">
+                                {/* Increased scale for impact */}
+                                <Logo variant="icon" className="w-24 h-24 md:w-28 md:h-28 drop-shadow-2xl" />
                             </Link>
                         </div>
 
-                        {/* RIGHT COLUMN: Links + Miss World + Actions */}
-                        <div className="flex-1 flex justify-end items-center gap-6">
+                        {/* RIGHT COLUMN: Links + Miss World + Actions - flex-1 w-0 guarantees equal width */}
+                        <div className="flex-1 w-0 flex justify-end items-center gap-6">
                             <nav className="flex items-center gap-6">
                                 {/* Miss World Button */}
                                 <Link href="/miss-world" className="relative group overflow-hidden bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all border border-yellow-400/50">
