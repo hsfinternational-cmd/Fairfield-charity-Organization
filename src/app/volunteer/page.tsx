@@ -1,17 +1,24 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
+import { VolunteerHero } from '@/components/about/volunteer-hero';
+import { VolunteerShowcase } from '@/components/volunteer/volunteer-showcase';
 
 export default function VolunteerPage() {
     return (
         <main className="min-h-screen flex flex-col">
             <Header />
-            <div className="flex-1 pt-32 pb-24">
+
+            <VolunteerHero />
+
+            <VolunteerShowcase />
+
+            <div className="flex-1 pt-12 pb-24 bg-gray-50">
                 <div className="container max-w-3xl">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-8 font-serif">Become a Volunteer</h1>
-                    <p className="text-lg text-[var(--color-text-light)] mb-12">
-                        Join our global community of volunteers and make a real difference in people's lives.
-                    </p>
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold font-serif mb-4">Join the Movement</h2>
+                        <p className="text-gray-600">Fill out the form below to get started.</p>
+                    </div>
 
                     <form className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 space-y-6">
                         <div className="grid md:grid-cols-2 gap-6">

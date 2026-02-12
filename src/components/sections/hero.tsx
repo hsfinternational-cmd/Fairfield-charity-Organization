@@ -88,7 +88,7 @@ export function Hero() {
             </div>
 
             {/* Hero Content */}
-            <div className="container relative z-20 text-white pt-32 pb-48">
+            <div className="container relative z-20 text-white pt-40 pb-48">
                 <motion.div
                     initial="hidden"
                     animate="visible"

@@ -108,7 +108,7 @@ export function UpcomingEvents() {
                                             <Clock className="w-3 h-3" />
                                             {event.dateStr.split('|')[0]}
                                         </div>
-                                        <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                                        <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1">
                                             {event.description}
                                         </p>
 
@@ -132,7 +132,7 @@ export function UpcomingEvents() {
             {/* Newsletter Section - Spaced & Floating */}
             <div className="mt-32 relative overflow-hidden">
                 <div className="container relative z-10">
-                    <div className="bg-[#0D9488] rounded-[3rem] p-12 md:p-16 relative overflow-hidden text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl shadow-black/20">
+                    <div className="bg-[#0D9488] rounded-[3rem] p-8 md:p-12 relative overflow-hidden text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl shadow-black/20">
                         {/* Organic Shape Overlay */}
                         <div className="absolute inset-0 pointer-events-none opacity-10">
                             <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-white">
@@ -140,34 +140,42 @@ export function UpcomingEvents() {
                             </svg>
                         </div>
 
-                        <div className="relative z-10 flex-1 min-w-0 text-white flex flex-col items-center lg:items-start text-center lg:text-left">
+                        <div className="relative z-10 flex-1 min-w-0 text-white flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">
                             <div className="mb-6">
                                 <Logo variant="full" dark />
                             </div>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 leading-tight">
                                 Subscribe for Event Updates
                             </h2>
-                            <p className="text-white/90 text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            <p className="text-white/90 text-base leading-relaxed">
                                 Stay informed about our latest initiatives and community gatherings. Join our mailing list to receive updates directly to your inbox.
                             </p>
                         </div>
 
-                        <div className="relative z-10 w-full max-w-md lg:w-auto shrink-0 bg-white p-2 rounded-3xl space-y-2 lg:space-y-0 lg:flex gap-2 shadow-2xl">
-                            <div className="flex-1 grid gap-2 p-2">
+                        <div className="relative z-10 w-full lg:w-auto shrink-0 bg-white p-2 rounded-3xl flex flex-col md:flex-row gap-2 shadow-2xl max-w-full">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 p-2 flex-1">
                                 <input
                                     type="text"
                                     placeholder="Name"
-                                    className="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:bg-gray-100 text-gray-900 border border-transparent focus:border-gray-200 transition-all"
+                                    className="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:bg-gray-100 text-gray-900 border border-transparent focus:border-gray-200 transition-all min-w-[200px]"
                                 />
                                 <input
                                     type="email"
                                     placeholder="Email"
-                                    className="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:bg-gray-100 text-gray-900 border border-transparent focus:border-gray-200 transition-all"
+                                    className="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:bg-gray-100 text-gray-900 border border-transparent focus:border-gray-200 transition-all min-w-[200px]"
                                 />
                             </div>
-                            <Button className="w-full lg:w-auto h-auto rounded-xl bg-[#FF7043] hover:bg-[#F4511E] text-white px-8 font-bold uppercase text-xs tracking-widest py-4 lg:py-0 shadow-lg">
-                                Subscribe
-                            </Button>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="w-full md:w-auto h-auto rounded-xl bg-[#FF7043] hover:bg-[#F4511E] text-white px-6 py-4 md:py-0 shadow-lg flex items-center justify-center gap-3 group relative overflow-hidden transition-all duration-300 md:min-w-[160px]"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="relative w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md group-hover:rotate-12 transition-transform duration-300">
+                                    <Logo variant="icon" className="w-5 h-5" />
+                                </div>
+                                <span className="font-bold uppercase text-xs tracking-widest relative z-10">Subscribe</span>
+                            </motion.button>
                         </div>
                     </div>
                 </div>

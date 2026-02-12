@@ -32,8 +32,9 @@ export function Header() {
     const navLinks = [
         { name: 'Home', href: '/' },
         { name: 'About', href: '/about' },
-        { name: 'Partnership', href: '/partnership' },
         { name: 'Initiatives', href: '/initiatives' },
+        { name: 'Partnership', href: '/partnership' },
+        { name: 'Volunteer', href: '/volunteer' },
         { name: 'Contact', href: '/contact' },
     ];
 
@@ -64,7 +65,7 @@ export function Header() {
                     {/* Desktop Nav - 3 Column Layout */}
                     <div className="hidden lg:flex w-full items-center justify-between">
                         {/* LEFT COLUMN: Nav Links - flex-1 w-0 guarantees equal width */}
-                        <div className="flex-1 w-0 flex justify-start items-center">
+                        <div className="flex-1 w-0 flex justify-end items-center pr-12">
                             <nav className="flex items-center gap-6 xl:gap-8">
                                 {navLinks.slice(0, 3).map((link) => (
                                     <Link
@@ -80,8 +81,7 @@ export function Header() {
 
                         {/* CENTER COLUMN: Logo with "Sheltering" Curve */}
                         <div className="flex-shrink-0 flex justify-center px-4 relative">
-                            {/* Curved "Box" Effect - White Background behind Logo */}
-                            <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 w-48 h-32 bg-white rounded-b-[4rem] shadow-xl z-[-1] opacity-100 hidden md:block"></div>
+                            {/* Curved "Box" Effect - REMOVED per user request */}
 
                             <Link href="/" className="flex items-center gap-1 group relative top-2">
                                 {/* Increased scale for impact */}
@@ -90,9 +90,46 @@ export function Header() {
                         </div>
 
                         {/* RIGHT COLUMN: Links + Miss World + Actions - flex-1 w-0 guarantees equal width */}
-                        <div className="flex-1 w-0 flex justify-end items-center gap-6">
+                        <div className="flex-1 w-0 flex justify-start items-center gap-6 pl-12">
                             <nav className="flex items-center gap-6">
-                                {/* Miss World Button */}
+                                {navLinks.slice(3, 6).map((link) => (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        className="text-white/90 font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider whitespace-nowrap"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                ))}
+                            </nav>
+
+                            {/* Actions (Search + Miss World Button) */}
+                            <div className="flex items-center gap-4 border-l border-white/10 pl-6">
+                                {/* Animated Search Input */}
+                                <div className="relative flex items-center">
+                                    <AnimatePresence>
+                                        {isSearchOpen && (
+                                            <motion.input
+                                                initial={{ width: 0, opacity: 0, padding: 0 }}
+                                                animate={{ width: 140, opacity: 1, padding: "0.5rem" }}
+                                                exit={{ width: 0, opacity: 0, padding: 0 }}
+                                                placeholder="Search..."
+                                                className="bg-white/10 border border-white/20 rounded-full text-sm outline-none px-4 py-2 mr-2 text-white placeholder:text-white/50 focus:bg-white/20"
+                                                autoFocus
+                                            />
+                                        )}
+                                    </AnimatePresence>
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        className="px-2 hover:bg-white/20 text-white"
+                                        onClick={() => setIsSearchOpen(!isSearchOpen)}
+                                    >
+                                        <Search className="h-5 w-5 text-white" />
+                                    </Button>
+                                </div>
+
+                                {/* Miss World Button (Replacing Donate) */}
                                 <Link href="/miss-world" className="relative group overflow-hidden bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all border border-yellow-400/50">
                                     <div className="relative h-4 w-48">
                                         <AnimatePresence mode="wait">
@@ -121,47 +158,6 @@ export function Header() {
                                         </AnimatePresence>
                                     </div>
                                 </Link>
-
-                                {navLinks.slice(3, 5).map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        className="text-white/90 font-medium hover:text-[var(--color-secondary)] transition-colors uppercase text-sm tracking-wider whitespace-nowrap"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                            </nav>
-
-                            {/* Actions (Search + Donate) */}
-                            <div className="flex items-center gap-4 border-l border-white/10 pl-6">
-                                {/* Animated Search Input */}
-                                <div className="relative flex items-center">
-                                    <AnimatePresence>
-                                        {isSearchOpen && (
-                                            <motion.input
-                                                initial={{ width: 0, opacity: 0, padding: 0 }}
-                                                animate={{ width: 140, opacity: 1, padding: "0.5rem" }}
-                                                exit={{ width: 0, opacity: 0, padding: 0 }}
-                                                placeholder="Search..."
-                                                className="bg-white/10 border border-white/20 rounded-full text-sm outline-none px-4 py-2 mr-2 text-white placeholder:text-white/50 focus:bg-white/20"
-                                                autoFocus
-                                            />
-                                        )}
-                                    </AnimatePresence>
-                                    <Button
-                                        variant="ghost"
-                                        size="sm"
-                                        className="px-2 hover:bg-white/20 text-white"
-                                        onClick={() => setIsSearchOpen(!isSearchOpen)}
-                                    >
-                                        <Search className="h-5 w-5 text-white" />
-                                    </Button>
-                                </div>
-
-                                <Button variant="secondary" size="sm" className="bg-[#D84315] hover:bg-[#BF360C] text-white rounded-full px-6 shadow-lg shadow-orange-500/20 whitespace-nowrap">
-                                    Donate
-                                </Button>
                             </div>
                         </div>
                     </div>

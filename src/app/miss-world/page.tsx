@@ -5,6 +5,8 @@ import { Crown, Star, Globe, Heart } from 'lucide-react';
 import Link from 'next/link';
 import { FadeIn, ScaleIn } from '@/components/animations/fade-in';
 
+import { ElleStorySection } from '@/components/elle-story/elle-story-section';
+
 export default function MissWorldPage() {
     return (
         <main className="min-h-screen bg-gray-50">
@@ -39,6 +41,9 @@ export default function MissWorldPage() {
                     </FadeIn>
                 </div>
             </section>
+
+            {/* Interactive Story Section */}
+            <ElleStorySection />
 
             {/* The Vision */}
             <section className="py-24">
